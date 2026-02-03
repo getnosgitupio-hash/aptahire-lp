@@ -10,7 +10,7 @@ import connectDashboard from "../assets/dash-4.png";
 const steps = [
   {
     step: "01",
-    title: "Screen ",
+    title: "Scrreen ",
     subtitle: "Find the right candidates instantly",
     desc: "Resume screening with Aptahire AI validates every applicant against JD matching, skill validation, and cheat detection no manual CV sorting.",
     image: searchDashboard,
