@@ -1,53 +1,169 @@
-/**
- * GuaranteeSection Component
- * Displays the productivity guarantee offer
- */
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import guaranteeBadge from "../assets/Money-back.png";
+import ProgressLoad from "./ProgressLoad";
+/* 🔢 Counter Hook */
+const useCountUp = (end, duration = 1200) => {
+  const [count, setCount] = useState(0);
 
-export default function GuaranteeSection() {
+  useEffect(() => {
+    let start = 0;
+    const increment = end / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [end, duration]);
+
+  return count;
+};
+
+export default function GuaranteeSection({ variant = "light" }) {
+  const hoursSaved = useCountUp(10);
+  const isDark = variant === "dark";
+
   return (
-    <section className="bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600 text-white py-16 lg:py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Badge */}
-        <div className="flex justify-center mb-8">
-          <span className="inline-flex items-center px-6 py-3 rounded-full text-sm sm:text-base font-bold bg-white/20 border-2 border-white/40">
-            <span className="text-2xl mr-2">✓</span>
-            RISK-FREE GUARANTEE
-          </span>
-        </div>
+    <section
+      className={`relative py-14 sm:py-16 lg:py-20 ${
+        isDark ? "bg-slate-950" : "bg-slate-50"
+      }`}
+    >
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Main Headline */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            Save 10+ Recruiter Hours Every Week
-            <span className="block mt-2">Or Your Next Month Is On Us</span>
-          </h2>
-        </div>
+        {/* 🔖 Badge Overlay */}
+        <motion.div
+          initial={{ opacity: 0, y: -12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="
+            absolute -top-14 sm:-top-16
+            left-[35%] sm:left-[44%] -translate-x-1/2
+            z-10
+          "
+        >
+          <img
+            src={guaranteeBadge}
+            alt="Money Back Guarantee"
+            className="w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 object-contain"
+          />
+        </motion.div>
 
-        {/* Content Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border-2 border-white/30 mb-10">
-          <p className="text-lg sm:text-xl text-white leading-relaxed mb-6">
-            Aptahire is built by former recruiters and agency founders who know how exhausting manual screening, scheduling, and no-show chaos can be when every role demands speed and rigor. It's designed to strip out low-value admin so you protect clients, margins, and your best billers' time.
-          </p>
-          <p className="text-lg sm:text-xl text-white leading-relaxed">
-            If, after fully implementing Aptahire on your open roles, you're not saving at least <span className="font-bold text-yellow-300">10 recruiter hours per week</span> across screening, setup, and first-round evaluations, <span className="font-bold text-yellow-300">your next month is free</span> (T&Cs apply). That's how strongly the team backs its impact on speed-to-submission and cost-per-hire.
-          </p>
-        </div>
+        {/* Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          className={`rounded-3xl border shadow-xl
+            pt-20 sm:pt-24 pb-10 sm:pb-12
+            px-5 sm:px-10 lg:px-14
+            ${
+              isDark
+                ? "bg-slate-900 border-slate-800 text-slate-100"
+                : "bg-white border-slate-200 text-slate-800"
+            }`}
+        >
+          {/* Heading */}
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+            <h2
+              className={`text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight ${
+                isDark ? "text-white" : "text-slate-900"
+              }`}
+            >
+              A Simple, Honest Productivity Guarantee
+            </h2>
+            <p
+              className={`mt-4 text-base sm:text-lg ${
+                isDark ? "text-slate-400" : "text-slate-600"
+              }`}
+            >
+              If Aptahire doesn’t save your team real recruiter time, you don’t pay.
+            </p>
+          </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <a 
-            href="#final-cta"
-            className="inline-flex items-center px-8 py-5 bg-white text-green-600 hover:bg-slate-50 text-lg font-bold rounded-xl shadow-2xl transform hover:scale-105 transition-all duration-200"
+          {/* Content */}
+          <div
+            className={`max-w-4xl mx-auto space-y-5 sm:space-y-6
+              text-base sm:text-lg leading-relaxed
+              ${
+                isDark ? "text-slate-300" : "text-slate-700"
+              }`}
           >
-            Claim Your 10-Hour-Per-Week Productivity Guarantee
-            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
-          <p className="text-green-100 mt-4 text-sm sm:text-base">
-            Put the Deep Screen System to the test on your next high-volume role.
+            <p>
+              Aptahire is built for agencies and lean talent teams handling volume,
+              urgency, and client pressure. It automates resume screening,
+              first-round interviews, and scheduling without removing recruiter
+              control.
+            </p>
+
+            <p>
+              If, after implementing Aptahire on active roles, you’re not saving at
+              least{" "}
+              <span
+                className={`font-bold ${
+                  isDark ? "text-white" : "text-slate-900"
+                }`}
+              >
+                {hoursSaved}+ recruiter hours per week
+              </span>{" "}
+              across screening and evaluations, we’ll{" "}
+              <span
+                className={`font-bold ${
+                  isDark ? "text-white" : "text-slate-900"
+                }`}
+              >
+                refund your next month
+              </span>
+              .
+            </p>
+
+            <p className="text-sm opacity-80">
+              No long-term contracts. No hidden conditions. Measured on real usage.
+            </p>
+          </div>
+
+          {/* Divider */}
+          <div
+            className={`my-8 sm:my-10 h-px ${
+              isDark ? "bg-slate-800" : "bg-slate-200"
+            }`}
+          />
+
+               {/* CTA */}
+        <div className="mt-14 flex flex-col items-center">
+          <button
+            className="inline-flex items-center justify-center
+              rounded-xl
+              px-7 sm:px-8 py-4
+              text-base sm:text-3xl
+              font-semibold text-white
+              bg-gradient-to-r
+              from-[rgb(50_94_235)]
+              to-[rgb(140_54_234)]
+              shadow-lg shadow-[rgb(50_94_235)/30]
+              transition-all duration-300
+              hover:scale-[1.04]
+              hover:shadow-xl
+              active:scale-[0.97]"
+          >
+              Try Aptahire Risk-Free
+          </button>
+
+          <p className="mt-3 text-indigo-600 font-semibold text-sm sm:text-base text-center">
+              See the impact on your next high-volume role.
           </p>
+
+          <ProgressLoad />
+
         </div>
+        </motion.div>
       </div>
     </section>
   );

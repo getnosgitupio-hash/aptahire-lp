@@ -1,33 +1,45 @@
 import React from "react";
 
 // Import all sections
+import Header from "./Compoents/Header";
 import HeroSection from "./Compoents/HeroSection";
 import IntegrationsBar from "./Compoents/IntegrationsBar";
-import FeaturesFlow from "./Compoents/FeaturesFlow";
-import DifferentiationSection from "./Compoents/DifferentiationSection";
-import ValueTable from "./Compoents/ValueTable";
+import HiringPainPoints from "./Compoents/HiringPainPoints";
+import SmartHiringStack from "./Compoents/SmartHiringStack";
+import HiringFlow from "./Compoents/HiringFlow";
+import HiringFeatures from "./Compoents/HiringFeatures";
+import HumanVsAI from "./Compoents/HumanVsAI";
+import AptahireImpactTable from "./Compoents/AptahireImpactTable";
 import TestimonialsSection from "./Compoents/TestimonialsSection";
-import ObjectionHandling from "./Compoents/ObjectionHandling";
 import RatingsSection from "./Compoents/RatingsSection";
+import FAQSection from "./Compoents/FAQSection";
 import GuaranteeSection from "./Compoents/GuaranteeSection";
 import FinalCTASection from "./Compoents/FinalCTASection";
-
+import Footer from "./Compoents/Footer";
+import AIHiringPartnerSection from "./Compoents/AIHiringPartnerSection";
+import StickyOfferFooter from "./Compoents/StickyOfferFooter";
 
 const App = () => {
   
   return (
     <>
+      <Header />
       <HeroSection />
       <IntegrationsBar />
-      <FeaturesFlow />
-      <DifferentiationSection />
-      <ValueTable />
+      <HiringPainPoints />
+      <SmartHiringStack />
+      <AIHiringPartnerSection />
+      <HiringFlow />
+      <HiringFeatures />
+      <HumanVsAI />
+      <AptahireImpactTable />
       <TestimonialsSection />
-      <ObjectionHandling />
       <RatingsSection />
+      <FAQSection />
       <GuaranteeSection />
       <FinalCTASection />
-     
+       <Footer />
+       <StickyOfferFooter />
     </>
   );
 };

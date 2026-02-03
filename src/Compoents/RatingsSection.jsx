@@ -2,122 +2,170 @@
  * RatingsSection Component
  * Displays review platform ratings and customer quotes
  */
+import ProgressLoad from "./ProgressLoad";
+import profile1 from "../assets/profile1.png";
+import profile2 from "../assets/profile2.webp";
+import profile3 from "../assets/megha.png";
+import profile4 from "../assets/profile4.webp";
 
 export default function RatingsSection() {
   const ratings = [
     {
-      platform: 'G2 Crowd',
-      rating: '5/5',
-      description: 'Rated 5/5 by recruitment agencies for streamlining first-round interviews with AI.'
+      platform: "G2 Crowd",
+      rating: "5/5",
+      description:
+        "Rated 5/5 by recruitment agencies for streamlining first-round interviews with AI.",
     },
     {
-      platform: 'Capterra',
-      rating: '4.9/5',
-      description: 'Rated 4.9/5 by in-house TA teams automating screening and shortlisting for high-volume roles.'
+      platform: "Capterra",
+      rating: "4.9/5",
+      description:
+        "Rated 4.9/5 by in-house TA teams automating screening and shortlisting for high-volume roles.",
     },
     {
-      platform: 'HR Tech Marketplace',
-      rating: '5/5',
-      description: 'Rated 5/5 by HR leaders looking to cut interview costs while improving candidate experience.'
-    }
+      platform: "HR Tech Marketplace",
+      rating: "5/5",
+      description:
+        "Rated 5/5 by HR leaders looking to cut interview costs while improving candidate experience.",
+    },
   ];
 
   const quotes = [
     {
-      name: 'Paul R.',
-      title: 'Director, ScaleUp Search',
-      quote: 'Couldn\'t run the agency without it. Aptahire takes over the repetitive screening and scheduling, so my team finally spends their time talking to serious candidates, not formatting CVs.'
+      name: "Paul R.",
+      title: "Director, ScaleUp Search",
+      image: profile1,
+      quote:
+        "Couldn't run the agency without it. Aptahire takes over the repetitive screening and scheduling, so my team finally spends their time talking to serious candidates.",
     },
     {
-      name: 'Priya K.',
-      title: 'Head of Talent, FintechCo',
-      quote: 'The best solution for handling 400+ applications per role. We used to spend days building a shortlist. Now Aptahire ranks and interviews for us and saves at least one full recruiter day per role.'
+      name: "Priya K.",
+      title: "Head of Talent, FintechCo",
+      image: profile2,
+      quote:
+        "The best solution for handling 400+ applications per role. Aptahire ranks and interviews for us and saves at least one full recruiter day per role.",
     },
     {
-      name: 'Megan L.',
-      title: 'Senior Recruiter, GlobalTech',
-      quote: 'Great alternative to traditional ATS workflows. The AI interviews feel structured but human, and the insight reports make it easy to justify every recommendation to hiring managers.'
+      name: "Megan L.",
+      title: "Senior Recruiter, GlobalTech",
+      image: profile3,
+      quote:
+        "Great alternative to traditional ATS workflows. The AI interviews feel structured but human, and the insight reports make recommendations easy.",
     },
     {
-      name: 'Victor T.',
-      title: 'HR Manager, Enterprise BPO',
-      quote: 'I was new to AI recruiting tools and honestly skeptical. Now I have to say wow. It saves us a tremendous amount of time and massively reduces no-show and fake-candidate issues.'
-    }
+      name: "Victor T.",
+      title: "HR Manager, Enterprise BPO",
+      image: profile4,
+      quote:
+        "I was skeptical at first, but Aptahire saves tremendous time and reduces no-shows and fake-candidate issues.",
+    },
   ];
 
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-white py-16 lg:py-18">
+    <section className="bg-gradient-to-b from-slate-50 to-white py-14 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+        {/* Header */}
+        <div className="text-center mb-10 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
             Hear Why Recruiters and Talent Teams
-            <span className="block mt-2 text-blue-600">Love Aptahire...</span>
+            <span className="block mt-2 text-blue-600">
+              Love Aptahire
+            </span>
           </h2>
         </div>
 
         {/* Rating Platforms */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 sm:mb-16">
           {ratings.map((item, index) => (
-            <div 
+            <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center hover:shadow-2xl transition-shadow duration-300"
+              className="bg-white rounded-2xl p-6 sm:p-8
+                         shadow-lg border border-slate-200
+                         text-center hover:shadow-2xl transition"
             >
               <div className="flex justify-center gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
+                  <i
+                    key={i}
+                    className="fa-solid fa-star text-yellow-400 text-lg"
+                  />
                 ))}
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-2">{item.platform}</h3>
-              <p className="text-3xl font-bold text-blue-600 mb-4">{item.rating}</p>
-              <p className="text-slate-600 leading-relaxed">{item.description}</p>
+
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">
+                {item.platform}
+              </h3>
+              <p className="text-3xl font-bold text-blue-600 mb-4">
+                {item.rating}
+              </p>
+              <p className="text-slate-600 text-sm sm:text-base">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Quote Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {quotes.map((quote, index) => (
-            <div 
+          {quotes.map((q, index) => (
+            <div
               key={index}
-              className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200 hover:border-blue-300 transition-colors duration-300"
+              className="bg-gradient-to-br from-blue-50 to-purple-50
+                         rounded-2xl p-6 sm:p-8
+                         border border-blue-200
+                         hover:shadow-lg transition"
             >
-              <p className="text-slate-700 leading-relaxed mb-4 italic">
-                "{quote.quote}"
-              </p>
-              <div className="border-t border-slate-300 pt-4">
-                <p className="font-bold text-slate-900">{quote.name}</p>
-                <p className="text-sm text-slate-600">{quote.title}</p>
+              <div className="flex items-center gap-4 mb-4">
+                <img
+                  src={q.image}
+                  alt={q.name}
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-500 shrink-0"
+                />
+                <div>
+                  <p className="font-bold text-slate-900 leading-tight">
+                    {q.name}
+                  </p>
+                  <p className="text-sm text-slate-600 leading-tight">
+                    {q.title}
+                  </p>
+                </div>
               </div>
+
+              <p className="text-slate-700 leading-relaxed italic text-sm sm:text-base">
+                “{q.quote}”
+              </p>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-         
-           <button
-  className="mt-10 inline-flex items-center justify-center
-             px-10 py-4 rounded-xl
-             text-base sm:text-2xl font-semibold
-             bg-gradient-to-r from-purple-600 to-indigo-600
-             text-white
-             shadow-xl
-             transform transition-all duration-300 ease-in-out
-             hover:scale-105
-             hover:shadow-2xl
-             hover:from-pink-500 hover:to-purple-600
-             active:scale-95">
- See Why Top Recruitment Brands Rate Us Five Stars
- <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-</button>
-          <p className="text-slate-600 mt-4 text-sm sm:text-xl">
-            Discover the edge teams gain with AI screening.
+
+             {/* CTA */}
+        <div className="mt-14 flex flex-col items-center">
+          <button
+            className="inline-flex items-center justify-center
+              rounded-xl
+              px-7 sm:px-8 py-4
+              text-base sm:text-3xl
+              font-semibold text-white
+              bg-gradient-to-r
+              from-[rgb(50_94_235)]
+              to-[rgb(140_54_234)]
+              shadow-lg shadow-[rgb(50_94_235)/30]
+              transition-all duration-300
+              hover:scale-[1.04]
+              hover:shadow-xl
+              active:scale-[0.97]"
+          >
+           Join 500+ Agencies Hiring Smarter
+          </button>
+
+          <p className="mt-3 text-indigo-600 font-semibold text-sm sm:text-base text-center">
+            Don’t let lean teams outpace you on enterprise volume.
+
           </p>
+
+          <ProgressLoad />
+
         </div>
       </div>
     </section>
