@@ -78,12 +78,12 @@ const HiringPainPoints = () => {
         </p>
 
         {/* STATS GRID */}
-  {/* STATS GRID */}
-<div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-  {stats.map((item, index) => (
-    <div
-      key={index}
-      className="
+        {/* STATS GRID */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {stats.map((item, index) => (
+            <div
+              key={index}
+              className="
         bg-white
         rounded-2xl
         p-6 sm:p-8
@@ -93,33 +93,33 @@ const HiringPainPoints = () => {
         hover:-translate-y-1
         hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)]
       "
-    >
-      {/* ICON + VALUE */}
-      <div className="flex flex-row sm:flex-col items-center justify-center gap-3 sm:gap-0">
-        <div className="flex-shrink-0">
-          {item.icon}
+            >
+              {/* ICON + VALUE */}
+              <div className="flex flex-row sm:flex-col items-center justify-center gap-3 sm:gap-0">
+                <div className="flex-shrink-0">
+                  {item.icon}
+                </div>
+
+                <div
+                  className={`text-3xl sm:mt-4 sm:text-3xl font-extrabold ${item.color}`}
+                >
+                  {item.value}
+                </div>
+              </div>
+
+              {/* TEXT */}
+              <p className="mt-3 text-sm sm:text-base text-slate-600">
+                {item.text}
+              </p>
+            </div>
+          ))}
         </div>
 
-        <div
-          className={`text-3xl sm:mt-4 sm:text-3xl font-extrabold ${item.color}`}
-        >
-          {item.value}
-        </div>
-      </div>
 
-      {/* TEXT */}
-      <p className="mt-3 text-sm sm:text-base text-slate-600">
-        {item.text}
-      </p>
-    </div>
-  ))}
-</div>
-
-        
 
       </div>
 
-              {/* <div className="mt-14 flex flex-col items-center">
+      {/* <div className="mt-14 flex flex-col items-center">
                 <button
                   className="inline-flex items-center justify-center
                     rounded-xl
@@ -143,6 +143,59 @@ Convert multi-round, multilingual interviews into confident hiring decisions fas
                 <ProgressLoad />
       
               </div> */}
+              <div className="md:mt-16 mt-10 text-center flex flex-col items-center gap-4">
+  
+  <button
+    onClick={() => {
+      document.getElementById("contact")?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }}
+    className="group relative overflow-hidden
+      px-8 py-4
+      text-white text-sm sm:text-2xl
+      rounded-xl
+      bg-gradient-to-r from-indigo-600 to-purple-600
+      shadow-lg
+      transition-all duration-300
+      hover:scale-[1.04]
+      active:scale-[0.97]"
+  >
+    {/* Shine Sweep */}
+    <span
+      className="absolute top-0 -left-[45%] w-[45%] h-full
+        bg-white/40 z-0
+        transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+        [clip-path:polygon(0%_0%,55%_0%,100%_100%,25%_100%)]
+        group-hover:left-full
+        group-hover:opacity-0"
+    />
+
+    {/* Soft Glow Overlay */}
+    <span
+      className="absolute inset-0 bg-white/5
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-500"
+    />
+
+    <span className="relative z-10">
+      Deploy Your 24/7 AI Recruiter Now
+    </span>
+  </button>
+
+ <p className="text-sm sm:text-base">
+  ⚡ Slow hiring is costing you roles right now.
+</p>
+
+  <div className="w-full flex justify-center">
+    <ProgressLoad />
+  </div>
+
+  <p className="text-red-600 font-semibold">
+    🚨 HURRY! Only 7 onboarding slots left this month.
+  </p>
+
+</div>
     </section>
   );
 };

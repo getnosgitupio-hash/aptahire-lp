@@ -91,7 +91,11 @@ export default function StickyOfferFooter() {
 
             {/* CTA */}
             <div className="flex justify-center lg:justify-end">
-              <button
+              <button  onClick={() => {
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
                 className="
                   group relative isolate overflow-hidden
                   rounded-full px-8 sm:px-10 py-2 sm:py-4

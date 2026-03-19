@@ -5,14 +5,15 @@ const Header = () => {
   return (
     <>
       {/* 🔴 Top Attention Bar */}
-      <div
-        className="w-full text-black text-center py-2 sm:px-4 px-1
-        text-xs sm:text-sm md:text-base font-semibold
-        bg-[#ffeb3c]"
-      >
-Agencies: Close roles 10× faster. Save <span className="font-bold text-red-600">10+ hrs/week</span>. Limited seats.
-
-      </div>
+     <div
+  className="w-full text-black text-center py-2 sm:px-4 px-1
+  text-xs sm:text-sm md:text-base font-semibold
+  bg-[#ffeb3c]"
+>
+  
+   
+  ⚠️ Only 7 Free Workflow Review Spots Left - Agencies Are Claiming Them Fast.
+</div>
 
       {/* 🧭 Header */}
       {/* <header className="w-full bg-white border-b border-gray-200 relative">

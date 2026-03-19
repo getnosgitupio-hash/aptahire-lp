@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import ProgressLoad from "./ProgressLoad";
 
 // Dashboard images
-import searchDashboard from "../assets/dash-1.png";
-import interviewDashboard from "../assets/dash-2.png";
-import analysisDashboard from "../assets/dash-3.png";
-import connectDashboard from "../assets/dash-4.png";
+import searchDashboard from "../assets/JD.png";
+import interviewDashboard from "../assets/AI.png";
+import analysisDashboard from "../assets/Resume.png";
+import connectDashboard from "../assets/phone-1.png";
 
 const steps = [
   {
@@ -43,6 +43,8 @@ const steps = [
 ];
 
 const HiringFlow = () => {
+  const [popupImage, setPopupImage] = useState(null);
+
   return (
     <section className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4 sm:py-12">
       
@@ -64,11 +66,7 @@ const HiringFlow = () => {
           <div
             key={index}
             className="
-              relative
-              bg-white
-              rounded-2xl
-              p-5 sm:p-6
-              shadow-md
+              relative bg-white rounded-2xl p-5 sm:p-6 shadow-md h-full flex flex-col
               hover:shadow-xl
               transition
             "
@@ -112,51 +110,115 @@ const HiringFlow = () => {
             </p>
 
             {/* DASHBOARD IMAGE */}
-   {/* DASHBOARD IMAGE — DESKTOP ONLY */}
-<div className="hidden md:block mt-4 rounded-xl border border-slate-200 bg-slate-50 p-2">
-  <img
-    src={item.image}
-    alt={item.title}
-    className="
-      w-full
-      h-[240px] sm:h-[300px] lg:h-[360px]
-      object-contain
-    "
-  />
-</div>
+            <div className="block mt-4 rounded-xl border border-slate-200 bg-slate-50 p-2">
+              <img
+                src={item.image}
+                alt={item.title}
+                title="Click to enlarge"
+                onClick={() => setPopupImage(item.image)}
+                className="
+                  w-full
+                  h-[240px] sm:h-[300px] lg:h-[360px]
+                  object-contain
+                  cursor-pointer
+                "
+              />
+            </div>
 
           </div>
         ))}
       </div>
 
-           {/* CTA */}
-        <div className="mt-14 flex flex-col items-center">
+      {/* IMAGE POPUP MODAL */}
+      {popupImage && (
+        <div className="fixed inset-0 z-50 z-[9999]  flex items-center justify-center bg-black/70">
+          
+          {/* Close Button */}
           <button
-            className="inline-flex items-center justify-center
-              rounded-xl
-              px-2 sm:px-8 py-4
-              text-sm sm:text-3xl
-              font-semibold text-white
-              bg-gradient-to-r
-              from-[rgb(50_94_235)]
-              to-[rgb(140_54_234)]
-              shadow-lg shadow-[rgb(50_94_235)/30]
-              transition-all duration-300
-              hover:scale-[1.04]
-              hover:shadow-xl
-              active:scale-[0.97]"
+            onClick={() => setPopupImage(null)}
+            className="absolute top-4 right-4 text-white text-3xl font-bold hover:scale-110"
           >
-            Transform Chaos Into Client-Ready Shortlists
+            ✕
           </button>
 
-          <p className="mt-3 text-indigo-600 font-semibold text-sm sm:text-base text-center">
-           Convert multi-round, multilingual interviews into confident hiring decisions faster.
-
-          </p>
-
-          <ProgressLoad />
-
+          {/* Image */}
+          <img
+            src={popupImage}
+            alt="Preview"
+            className="max-w-[90%] max-h-[70%] rounded-xl shadow-2xl"
+          />
         </div>
+      )}
+
+      {/* CTA */}
+      <div className="mt-14 flex flex-col items-center text-center gap-3 sm:gap-2">
+
+  {/* CTA Button */}
+  <button
+    onClick={() => {
+      document.getElementById("contact")?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }}
+    className="group relative overflow-hidden
+      inline-flex items-center justify-center
+      rounded-xl
+      px-4 sm:px-10 py-3 sm:py-4
+      text-sm sm:text-3xl
+      font-semibold text-white
+      bg-gradient-to-r
+      from-[rgb(50_94_235)]
+      to-[rgb(140_54_234)]
+      shadow-lg shadow-[rgb(50_94_235)/30]
+      transition-all duration-300
+      hover:scale-[1.04]
+      hover:shadow-xl
+      active:scale-[0.97]
+      leading-none"
+  >
+    {/* Outer Soft Glow */}
+    <span className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[rgb(50_94_235)] to-[rgb(140_54_234)] blur-xl opacity-0 group-hover:opacity-40 transition duration-500" />
+
+    {/* Shine Sweep */}
+    <span
+      className="absolute inset-y-0 -left-[45%] w-[45%]
+        bg-white/40 z-0
+      
+        group-hover:left-full
+        group-hover:opacity-0"
+    />
+
+    {/* Soft Glow Overlay */}
+    <span
+      className="absolute inset-0 bg-white/5
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-500"
+    />
+
+    {/* Text */}
+    <span className="relative z-10 whitespace-nowrap">
+      Transform Chaos Into Client-Ready Shortlists
+    </span>
+  </button>
+
+  {/* Sub Info */}
+  <p className="sm:text-base text-xs text-black flex items-center gap-2 font-medium">
+    <span className="">⚠️</span>
+    <span>Roles close faster when you move first.</span>
+  </p>
+
+  {/* Progress */}
+  <div className="w-full max-w-xs">
+    <ProgressLoad />
+  </div>
+
+  {/* Urgency */}
+  <p className="text-red-600 font-semibold tracking-wide">
+    🚨 HURRY! Only 7 slots left this week.
+  </p>
+
+</div>
+
     </section>
   );
 };

@@ -140,33 +140,74 @@ export default function RatingsSection() {
 
 
              {/* CTA */}
-        <div className="mt-14 flex flex-col items-center">
-          <button
-            className="inline-flex items-center justify-center
-              rounded-xl
-              px-7 sm:px-8 py-4
-              text-base sm:text-3xl
-              font-semibold text-white
-              bg-gradient-to-r
-              from-[rgb(50_94_235)]
-              to-[rgb(140_54_234)]
-              shadow-lg shadow-[rgb(50_94_235)/30]
-              transition-all duration-300
-              hover:scale-[1.04]
-              hover:shadow-xl
-              active:scale-[0.97]"
-          >
-           Join 500+ Agencies Hiring Smarter
-          </button>
+        
 
-          <p className="mt-3 text-indigo-600 font-semibold text-sm sm:text-base text-center">
-            Don’t let lean teams outpace you on enterprise volume.
 
-          </p>
 
-          <ProgressLoad />
+        <div className="mt-14 flex flex-col items-center text-center gap-3 sm:gap-2">
 
-        </div>
+  {/* CTA Button */}
+  <button
+    onClick={() => {
+      document.getElementById("contact")?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }}
+    className="group relative inline-flex items-center justify-center
+      rounded-xl
+      px-6 sm:px-10 py-3 sm:py-4
+      text-sm sm:text-3xl
+      font-semibold text-white
+      bg-gradient-to-r
+      from-[rgb(50_94_235)]
+      to-[rgb(140_54_234)]
+      shadow-lg shadow-[rgb(50_94_235)/30]
+      transition-all duration-300
+      hover:scale-[1.04]
+      hover:shadow-xl
+      active:scale-[0.97]
+      overflow-hidden leading-none"
+  >
+    {/* Shine Sweep */}
+    <span
+      className="absolute inset-y-0 -left-[45%] w-[45%]
+        bg-white/50 z-0
+        transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+        [clip-path:polygon(0%_0%,55%_0%,100%_100%,25%_100%)]
+        group-hover:left-full
+        group-hover:opacity-0"
+    />
+
+    {/* Soft Glow Overlay */}
+    <span
+      className="absolute inset-0 bg-white/5
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-500"
+    />
+
+    {/* Button Text */}
+    <span className="relative z-10 whitespace-nowrap">
+      Join 500+ Agencies Hiring Smarter
+    </span>
+  </button>
+
+  {/* Live Activity */}
+  <p className="text-black font-semibold text-xs sm:text-base flex items-center gap-0">
+    <span className="">👀</span>
+    <span>3 agencies booked while you read this page.</span>
+  </p>
+
+  {/* Progress */}
+  <div className="w-full max-w-xs">
+    <ProgressLoad />
+  </div>
+
+  {/* Urgency */}
+  <p className="text-red-600 font-semibold tracking-wide ">
+    🚨 HURRY! Only 7 slots left this week.
+  </p>
+
+</div>
       </div>
     </section>
   );

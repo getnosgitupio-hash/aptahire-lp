@@ -17,7 +17,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="text-center text-base text-slate-500">
-          © 2025 Aptahire. All rights reserved.
+          © 2026 Aptahire. All rights reserved.
         </p>
       </div>
     </footer>

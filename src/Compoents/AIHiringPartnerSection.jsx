@@ -55,23 +55,67 @@ const AIHiringPartnerSection = () => {
 </div>
 
 {/* CTA */}
-<div className="mt-10 flex justify-center">
+<div className="mt-10 flex flex-col items-center text-center gap-4">
+  
+  {/* CTA Button */}
   <button
-    className="inline-flex items-center justify-center
-               rounded-xl px-4 sm:px-12 py-4 text-sm
+    onClick={() => {
+      document.getElementById("contact")?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }}
+    className="group relative overflow-hidden
+               inline-flex items-center justify-center
+               rounded-xl px-6 sm:px-12 py-3 sm:py-4 text-sm
                sm:text-2xl font-bold text-white
                bg-gradient-to-r from-[#325eeb] to-[#8c36ea]
                shadow-xl shadow-[#325eeb]/30
                transition-all duration-300
                hover:scale-105 hover:shadow-2xl
-               active:scale-95"
+               active:scale-95 leading-none"
   >
-    Deploy Your 24/7 AI Recruiter Now
+    {/* Outer Glow */}
+    <span className="absolute -inset-1 rounded-xl bg-gradient-to-r from-[#325eeb] to-[#8c36ea] blur-xl opacity-0 group-hover:opacity-40 transition duration-500" />
+
+    {/* Shine Sweep */}
+    <span
+      className="absolute inset-y-0 -left-[45%] w-[45%]
+        bg-white/40 z-0
+        transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+        [clip-path:polygon(0%_0%,55%_0%,100%_100%,25%_100%)]
+        group-hover:left-full
+        group-hover:opacity-0"
+    />
+
+    {/* Soft Glow Overlay */}
+    <span
+      className="absolute inset-0 bg-white/5
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-500"
+    />
+
+    {/* Text */}
+    <span className="relative z-10 whitespace-nowrap">
+      Deploy Your 24/7 AI Recruiter Now
+    </span>
   </button>
+
+  {/* Top Info */}
+  <p className="sm:text-base text-xs text-black flex items-center gap-2 font-medium">
+    <span className="animate-pulse">🔥</span>
+    <span>Agencies ahead of you deployed this already.</span>
+  </p>
+
+  {/* Progress */}
+  <ProgressLoad />
+
+  {/* Bottom Info */}
+ <p className="text-red-600 font-semibold">
+    🚨 HURRY! Only 7 slots left this week.
+  </p>
+
 </div>
-<p className="sm:text-md text-xs text-gray-800 mt-3">Don’t let faster competitors steal candidates.</p>
-<ProgressLoad />
-        </div>
+      </div>
       </div>
     </section>
   );

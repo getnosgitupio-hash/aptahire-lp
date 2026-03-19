@@ -4,7 +4,7 @@ import ProgressLoad from "./ProgressLoad";
 import DarkVeil from "./DarkVeil";
 
 /* ✅ Import Hero Image */
-import heroImage from "../assets/Group.jpg"; // change this path correctly
+import heroImage from "../assets/Main.png"; // change this path correctly
 
 /* ================= STAT CARD (WITH COUNTER) ================= */
 const StatCard = ({ value, label }) => {
@@ -117,24 +117,49 @@ export default function HeroWithVideo({ isPopupOpen = false, openPopup }) {
         </div>
 
         {/* CTA */}
-        <div className="mt-14 flex flex-col items-center">
-          <button
-            className="inline-flex items-center justify-center
-              rounded-xl
-              px-7 sm:px-8 py-4
-              text-base sm:text-3xl
-              font-semibold text-white
-              bg-gradient-to-r
-              from-[rgb(50_94_235)]
-              to-[rgb(140_54_234)]
-              shadow-lg shadow-[rgb(50_94_235)/30]
-              transition-all duration-300
-              hover:scale-[1.04]
-              hover:shadow-xl
-              active:scale-[0.97]"
-          >
-            Fill Your Hiring Pipeline Fast
-          </button>
+        <div className="relative mt-14 flex flex-col items-center">
+         <button onClick={() => {
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+  className="group relative inline-flex items-center justify-center
+    rounded-xl
+    px-7 sm:px-8 py-4
+    text-base sm:text-3xl
+    font-semibold text-white
+    bg-gradient-to-r
+    from-[rgb(50_94_235)]
+    to-[rgb(140_54_234)]
+    shadow-lg shadow-[rgb(50_94_235)/30]
+    transition-all duration-300
+    hover:scale-[1.04]
+    hover:shadow-xl
+    active:scale-[0.97]
+    overflow-hidden"
+>
+  {/* Soft Glow Overlay */}
+  <span className="
+    absolute top-0 -left-[45%] w-[45%] h-full 
+    bg-white/50 z-0 
+    transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+    [clip-path:polygon(0%_0%,55%_0%,100%_100%,25%_100%)]
+    group-hover:left-full
+    group-hover:opacity-0
+  "></span>
+
+                                {/* Soft glow overlay */}
+                                <span className="
+    absolute inset-0 bg-white/5
+    opacity-0 group-hover:opacity-100
+    transition-opacity duration-500
+  "></span>
+
+  {/* Button Text */}
+  <span className="relative z-10">
+    Fill Your Hiring Pipeline Fast
+  </span>
+</button>
 
           <p className="mt-3 text-indigo-600 font-semibold text-sm sm:text-base text-center">
             Join AI-powered agencies recommending top talent at scale.

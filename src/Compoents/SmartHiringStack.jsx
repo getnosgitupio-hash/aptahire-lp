@@ -2,18 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import ProgressLoad from "./ProgressLoad";
 
 /* 🔹 DASHBOARD IMAGES */
-import jdImg from "../assets/aptahire-logo.webp";
-import resumeImg from "../assets/aptahire-logo.webp";
-import interviewImg from "../assets/aptahire-logo.webp";
-import verifyImg from "../assets/aptahire-logo.webp";
-import reportImg from "../assets/aptahire-logo.webp";
-import decisionImg from "../assets/aptahire-logo.webp";
+// import jdImg from "../assets/aptahire-logo.webp";
+// import resumeImg from "../assets/aptahire-logo.webp";
+// import interviewImg from "../assets/aptahire-logo.webp";
+// import verifyImg from "../assets/aptahire-logo.webp";
+// import reportImg from "../assets/aptahire-logo.webp";
+// import decisionImg from "../assets/aptahire-logo.webp";
 
 /* STEPS */
 const steps = [
   {
     title: "JD Creation",
-    img: jdImg,
+  
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -23,7 +23,7 @@ const steps = [
   },
   {
     title: "Resume Screening",
-    img: resumeImg,
+   
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
         <circle cx="11" cy="11" r="8" />
@@ -33,7 +33,7 @@ const steps = [
   },
   {
     title: "AI Phone Interview",
-    img: interviewImg,
+    
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="3" y="8" width="18" height="10" rx="2" />
@@ -44,7 +44,7 @@ const steps = [
   },
       {
     title: "AI Video Interview",
-    img: verifyImg,
+   
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6z" />
@@ -53,7 +53,7 @@ const steps = [
   },
   {
     title: "Verification",
-    img: verifyImg,
+   
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M12 2l7 4v6c0 5-3.5 9-7 10-3.5-1-7-5-7-10V6z" />
@@ -63,7 +63,7 @@ const steps = [
 
   {
     title: "Candidate Report",
-    img: reportImg,
+   
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
         <line x1="8" y1="6" x2="21" y2="6" />
@@ -77,7 +77,7 @@ const steps = [
   },
   {
     title: "Human Decision",
-    img: decisionImg,
+ 
     icon: (
       <svg viewBox="0 0 24 24" className="h-6 w-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
         <circle cx="12" cy="7" r="4" />
@@ -163,12 +163,59 @@ const SmartHiringStack = () => {
         </div>
 
         {/* CTA */}
-        <div className="md:mt-16 mt-10 text-center">
-          <button className="px-8 py-4 text-white text-sm sm:text-xl rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600">
-            Deploy Your 24/7 AI Recruiter Now
-          </button>
-          <ProgressLoad />
-        </div>
+       <div className="md:mt-16 mt-10 text-center flex flex-col items-center gap-4">
+  
+  <button
+    onClick={() => {
+      document.getElementById("contact")?.scrollIntoView({
+        behavior: "smooth",
+      });
+    }}
+    className="group relative overflow-hidden
+      px-8 py-4
+      text-white text-sm sm:text-2xl
+      rounded-xl
+      bg-gradient-to-r from-indigo-600 to-purple-600
+      shadow-lg
+      transition-all duration-300
+      hover:scale-[1.04]
+      active:scale-[0.97]"
+  >
+    {/* Shine Sweep */}
+    <span
+      className="absolute top-0 -left-[45%] w-[45%] h-full
+        bg-white/40 z-0
+        transition-all duration-[1000ms] ease-[cubic-bezier(0.4,0,0.2,1)]
+        [clip-path:polygon(0%_0%,55%_0%,100%_100%,25%_100%)]
+        group-hover:left-full
+        group-hover:opacity-0"
+    />
+
+    {/* Soft Glow Overlay */}
+    <span
+      className="absolute inset-0 bg-white/5
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-500"
+    />
+
+    <span className="relative z-10">
+      Book a Free Hiring Workflow Review
+    </span>
+  </button>
+
+  <p className="text-sm sm:text-base">
+    Your competitors booked theirs this morning.
+  </p>
+
+  <div className="w-full flex justify-center">
+    <ProgressLoad />
+  </div>
+
+  <p className="text-red-600 font-semibold">
+    🚨 HURRY! Only 7 slots left this week.
+  </p>
+
+</div>
 
       </div>
     </section>
